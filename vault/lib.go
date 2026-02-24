@@ -199,31 +199,23 @@ func NewR2(ctx context.Context) (*R2, error) {
 	if key == "" {
 		key = "vault.bin"
 	}
-
 	if accountID == "" || ak == "" || sk == "" || bucket == "" {
 		return nil, fmt.Errorf("missing env vars: R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET")
 	}
 
 	endpoint := fmt.Sprintf("https://%s.r2.cloudflarestorage.com", accountID)
 
-	customResolver := aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...any) (aws.Endpoint, error) {
-		if service == s3.ServiceID {
-			return aws.Endpoint{URL: endpoint, HostnameImmutable: true}, nil
-		}
-		return aws.Endpoint{}, &aws.EndpointNotFoundError{}
-	})
-
 	cfg, err := config.LoadDefaultConfig(
 		ctx,
 		config.WithRegion("auto"),
 		config.WithCredentialsProvider(credentials.NewStaticCredentialsProvider(ak, sk, "")),
-		config.WithEndpointResolverWithOptions(customResolver),
 	)
 	if err != nil {
 		return nil, err
 	}
 
 	client := s3.NewFromConfig(cfg, func(o *s3.Options) {
+		o.BaseEndpoint = aws.String(endpoint) // <-- новый способ
 		o.UsePathStyle = true
 	})
 
