@@ -108,6 +108,10 @@ func doLogin(c *gin.Context) {
 	} else {
 		c.Redirect(http.StatusFound, "/mint")
 	}
+
+	// if role == roleAdmin || role == roleMint {
+	// c.Redirect(http.StatusFound, "/")
+	// return
 }
 
 func doLogout(c *gin.Context) {

@@ -6,36 +6,23 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func registerRoutes(rg *gin.RouterGroup) {
-	rg.GET("/", func(c *gin.Context) {
+func registerRoutes(auth *gin.RouterGroup) {
+	auth.GET("/", func(c *gin.Context) {
 		roleAny, _ := c.Get("role")
 		role := roleAny.(string)
 
-		switch role {
-		case roleAdmin:
-			handleIndex(c)
-		case roleMint:
-			handleMint(c)
-		default:
-			c.AbortWithStatus(http.StatusForbidden)
-		}
-	})
-
-	rg.GET("/admin", func(c *gin.Context) {
-		roleAny, _ := c.Get("role")
-		if roleAny.(string) != roleAdmin {
-			c.AbortWithStatus(http.StatusForbidden)
+		if role == roleAdmin {
+			handleIndex(c) // index.html
 			return
 		}
-		handleIndex(c)
-	})
-
-	rg.GET("/mint", func(c *gin.Context) {
-		roleAny, _ := c.Get("role")
-		if roleAny.(string) != roleMint {
-			c.AbortWithStatus(http.StatusForbidden)
+		if role == roleMint {
+			handleMint(c) // mint.html
 			return
 		}
-		handleMint(c)
+
+		c.AbortWithStatus(http.StatusForbidden)
 	})
+
+	auth.GET("/admin", func(c *gin.Context) { handleIndex(c) })
+	auth.GET("/mint", func(c *gin.Context) { handleMint(c) })
 }

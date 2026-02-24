@@ -1,12 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"golang.org/x/crypto/bcrypt"
 )
 
 func main() {
@@ -15,6 +17,15 @@ func main() {
 	if err != nil {
 		log.Println("Error loading .env file:", err)
 	}
+
+	hash := os.Getenv("ADMIN_PASS_HASH")
+	pass := os.Getenv("TEST_PASS")
+
+	fmt.Println(hash)
+	fmt.Println(pass)
+
+	err = bcrypt.CompareHashAndPassword([]byte(hash), []byte(pass))
+	fmt.Println("match:", err == nil, "err:", err)
 
 	gin.SetMode(gin.ReleaseMode)
 
