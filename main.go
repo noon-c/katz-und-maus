@@ -16,9 +16,10 @@ func main() {
 
 	r.LoadHTMLGlob("templates/*")
 
-	r.GET("/home", handleIndex) // Home page
-	r.GET("/", showLoginPage)   // Login page
-	r.GET("/healthz", health)   // Healthcheck
+	r.GET("/home", handleIndex)     // Home page
+	r.GET("/", showLoginPage)       // Login page
+	r.GET("/logout", showLoginPage) // Logout
+	r.GET("/healthz", health)       // Healthcheck
 
 	port := os.Getenv("PORT")
 	if port == "" {
