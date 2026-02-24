@@ -104,14 +104,11 @@ func doLogin(c *gin.Context) {
 
 	// редирект сразу на нужную страницу
 	if role == roleAdmin {
-		c.Redirect(http.StatusFound, "/admin")
+		c.Redirect(http.StatusFound, "/SFEtAKq5ueS64tlhUSKvNsRYNoh4iC8QYfSswOiYltCvJ3PETUdh0p") // /admin
 	} else {
-		c.Redirect(http.StatusFound, "/mint")
+		c.Redirect(http.StatusFound, "/SFEtAKq5ueS64tIhUSKvNsRYNoh4iC8QYfSswOiYltCvJ3PETUdh0p") // /mint
 	}
 
-	// if role == roleAdmin || role == roleMint {
-	// c.Redirect(http.StatusFound, "/")
-	// return
 }
 
 func doLogout(c *gin.Context) {

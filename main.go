@@ -18,14 +18,17 @@ func main() {
 		log.Println("Error loading .env file:", err)
 	}
 
+	hashMint := os.Getenv("MINT_PASS_HASH")
+
 	hash := os.Getenv("ADMIN_PASS_HASH")
-	pass := os.Getenv("TEST_PASS")
+	pass := os.Getenv("MASTER_PASSWORD")
 
 	fmt.Println(hash)
 	fmt.Println(pass)
 
 	err = bcrypt.CompareHashAndPassword([]byte(hash), []byte(pass))
 	fmt.Println("match:", err == nil, "err:", err)
+	fmt.Println("hashMint:", hashMint)
 
 	gin.SetMode(gin.ReleaseMode)
 
@@ -33,11 +36,6 @@ func main() {
 	r.Use(gin.Logger(), gin.Recovery(), secureHeaders())
 
 	r.LoadHTMLGlob("templates/*")
-
-	// r.GET("/home", handleIndex)     // Home page
-	// r.GET("/", showLoginPage)       // Login page
-	// r.GET("/logout", showLoginPage) // Logout
-	// r.GET("/healthz", health) // Healthcheck
 
 	// Public routes
 	r.GET("/login", showLoginPage)
