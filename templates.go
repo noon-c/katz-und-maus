@@ -14,6 +14,10 @@ func handleIndex(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", gin.H{"Error": nil})
 }
 
+func handleMint(c *gin.Context) {
+	c.HTML(http.StatusOK, "mint.html", gin.H{"Error": nil})
+}
+
 func showLoginPage(c *gin.Context) {
 	c.HTML(http.StatusOK, "login.html", gin.H{"Error": nil})
 }

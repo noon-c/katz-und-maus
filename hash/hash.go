@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	pass := "LONG_PASSWORD_HERE_2000"
+	pass := "123456"
 	hash, err := bcrypt.GenerateFromPassword([]byte(pass), bcrypt.DefaultCost)
 	if err != nil {
 		log.Fatal(err)

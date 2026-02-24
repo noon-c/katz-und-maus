@@ -24,7 +24,7 @@
           </div>
           <div>
             <h1 class="card-title text-2xl">Вход</h1>
-            <p class="text-sm opacity-70">Введите имя пользователя и пароль, чтобы продолжить</p>
+            <p class="text-sm opacity-70">Введите пароль, чтобы продолжить</p>
           </div>
         </div>
 
@@ -34,22 +34,12 @@
         </div>
         {{end}}
 
-        <!-- <form class="mt-4 space-y-3" method="post" action="/login"> -->
-        <form class="mt-4 space-y-3" method="get" action="/" onsubmit="event.preventDefault(); window.location='/home';">
-
-
-          <label class="form-control w-full">
-            <div class="label">
-              <span class="label-text">Имя пользователя</span>
-            </div>
-            <input type="text" name="username" class="input input-bordered w-full" placeholder="Имя пользователя" autofocus />
-          </label>
-
+        <form class="mt-4 space-y-3" method="post" action="/login">
           <label class="form-control w-full">
             <div class="label">
               <span class="label-text">Пароль</span>
             </div>
-            <input type="password" name="password" class="input input-bordered w-full" placeholder="••••••••" autofocus />
+            <input type="password" name="password" class="input input-bordered w-full"  autofocus />
           </label>
 
           <button class="btn btn-primary w-full" type="submit">Войти</button>
