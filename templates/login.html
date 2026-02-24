@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" data-theme="cupcake">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- daisyUI CDN (prebuilt css) -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+</head>
+
+<body class="min-h-screen bg-base-200">
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <div class="card w-full max-w-md shadow-xl bg-base-100">
+      <div class="card-body">
+        <div class="flex items-center gap-3">
+          <div class="avatar placeholder">
+            <div class="bg-primary text-primary-content rounded-full w-10">
+              <span class="text-lg">🔒</span>
+            </div>
+          </div>
+          <div>
+            <h1 class="card-title text-2xl">Вход</h1>
+            <p class="text-sm opacity-70">Введи пароль, чтобы продолжить</p>
+          </div>
+        </div>
+
+        {{if .Error}}
+        <div class="alert alert-error mt-4">
+          <span>{{.Error}}</span>
+        </div>
+        {{end}}
+
+        <form class="mt-4 space-y-3" method="post" action="/login">
+          <label class="form-control w-full">
+            <div class="label">
+              <span class="label-text">Пароль</span>
+            </div>
+            <input type="password" name="password" class="input input-bordered w-full" placeholder="••••••••" autofocus />
+          </label>
+
+          <button class="btn btn-primary w-full" type="submit">Войти</button>
+        </form>
+
+        <div class="divider">или</div>
+
+        <div class="flex items-center justify-between gap-2">
+          <a class="link link-hover text-sm" href="/healthz">healthz</a>
+          <div class="flex gap-2">
+            <!-- переключатель тем -->
+            <button type="button" class="btn btn-ghost btn-sm" onclick="document.documentElement.setAttribute('data-theme','dark')">dark</button>
+            <button type="button" class="btn btn-ghost btn-sm" onclick="document.documentElement.setAttribute('data-theme','cupcake')">light</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

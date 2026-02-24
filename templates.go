@@ -28,3 +28,7 @@ func health(c *gin.Context) {
 func handleIndex(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", gin.H{"Error": nil})
 }
+
+func showLoginPage(c *gin.Context) {
+	c.HTML(http.StatusOK, "login.html", gin.H{"Error": nil})
+}

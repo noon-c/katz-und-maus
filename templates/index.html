@@ -1,11 +1,40 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>GO</title>
-    </head>
-    <body>
-        <h1>Running on GO</h1>
-        <p>Server is up and running!</p>
-    </body>
+<html lang="en" data-theme="cupcake">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Home</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+</head>
+
+<body class="min-h-screen bg-base-200">
+  <div class="navbar bg-base-100 shadow-sm">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl">katz-und-maus</a>
+    </div>
+    <div class="flex-none">
+      <a class="btn btn-outline btn-sm" href="/logout">Logout</a>
+    </div>
+  </div>
+
+  <main class="p-6">
+    <div class="max-w-3xl mx-auto space-y-4">
+      <div class="alert alert-success">
+        <span>Ты внутри. Всё работает.</span>
+      </div>
+
+      <div class="card bg-base-100 shadow">
+        <div class="card-body">
+          <h2 class="card-title">Панель</h2>
+          <p class="opacity-80">Сюда можно положить любые штуки: ссылки, список задач, инфу по билду.</p>
+          <div class="card-actions justify-end">
+            <a class="btn btn-primary" href="/healthz">Проверить healthz</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
 </html>

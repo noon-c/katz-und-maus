@@ -13,11 +13,12 @@ func main() {
 
 	r := gin.New()
 	r.Use(gin.Recovery())
-	
+
 	r.LoadHTMLGlob("templates/*")
 
-	r.GET("/", handleIndex)   // Home page
-	r.GET("/healthz", health) // Healthcheck
+	r.GET("/", handleIndex)        // Home page
+	r.GET("/login", showLoginPage) // Login page
+	r.GET("/healthz", health)      // Healthcheck
 
 	port := os.Getenv("PORT")
 	if port == "" {
