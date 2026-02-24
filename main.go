@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -14,6 +13,8 @@ func main() {
 
 	r := gin.New()
 	r.Use(gin.Recovery())
+	
+	r.LoadHTMLGlob("templates/*")
 
 	r.GET("/", handleIndex)   // Home page
 	r.GET("/healthz", health) // Healthcheck
@@ -26,11 +27,10 @@ func main() {
 		port = ":" + port
 	}
 
+	log.Printf("listening on %s", port)
+
 	err := r.Run(port)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println("Server started: http://localhost:8080")
-	log.Printf("listening on %s", port)
 }
