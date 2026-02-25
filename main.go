@@ -1,33 +1,20 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"golang.org/x/crypto/bcrypt"
+	"github.com/joho/godotenv"
 )
 
 func main() {
 
-	// er := godotenv.Load()
-	// if er != nil {
-	// 	log.Println("Error loading .env file:", er)
-	// }
-
-	// hashMint := os.Getenv("MINT_PASS_HASH")
-
-	hash := os.Getenv("ADMIN_PASS_HASH")
-	pass := os.Getenv("MASTER_PASSWORD")
-
-	fmt.Println(hash)
-	fmt.Println(pass)
-
-	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(pass))
-	fmt.Println("match:", err == nil, "err:", err)
-	// fmt.Println("hashMint:", hashMint)
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("Error loading .env file:", err)
+	}
 
 	gin.SetMode(gin.ReleaseMode)
 
