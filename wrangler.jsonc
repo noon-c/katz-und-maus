@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "katz-und-maus",
+  "name": "katz",
   "compatibility_date": "2025-09-27",
   "observability": {
     "enabled": true
