@@ -23,8 +23,6 @@ func registerRoutes(auth *gin.RouterGroup) {
 		c.AbortWithStatus(http.StatusForbidden)
 	})
 
-	// xGVAOyfob4FxtPhK for /admin
-	// VBCrbTDiI8MYs73L for /mint
-	auth.GET("/SFEtAKq5ueS64tlhUSKvNsRYNoh4iC8QYfSswOiYltCvJ3PETUdh0p", func(c *gin.Context) { handleIndex(c) })
-	auth.GET("/SFEtAKq5ueS64tIhUSKvNsRYNoh4iC8QYfSswOiYltCvJ3PETUdh0p", func(c *gin.Context) { handleMint(c) })
+	auth.GET("/SFEtAKq5ueS64tlhUSKvNsRYNoh4iC8QYfSswOiYltCvJ3PETUdh0p", func(c *gin.Context) { handleIndex(c) }) // for /admin
+	auth.GET("/SFEtAKq5ueS64tIhUSKvNsRYNoh4iC8QYfSswOiYltCvJ3PETUdh0p", func(c *gin.Context) { handleMint(c) })  // for /mint
 }
